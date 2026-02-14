@@ -2886,7 +2886,7 @@ impl Parser {
             if !hrd.fixed_pic_rate_general_flag[i] {
                 hrd.fixed_pic_rate_within_cvs_flag[i] = r.read_bit()?;
             }
-            if hrd.fixed_pic_rate_within_cvs_flag[i] {
+            if hrd.fixed_pic_rate_general_flag[i] || hrd.fixed_pic_rate_within_cvs_flag[i] {
                 hrd.elemental_duration_in_tc_minus1[i] = r.read_ue_max(2047)?;
             } else {
                 hrd.low_delay_hrd_flag[i] = r.read_bit()?;
